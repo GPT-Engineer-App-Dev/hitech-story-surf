@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Search, Terminal } from 'lucide-react';
+import { Search, Newspaper } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import HackerNewsList from '../components/HackerNewsList';
-import { ThemeToggle } from '../components/ThemeToggle';
 
 const fetchTopStories = async () => {
   const response = await fetch('https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=100');
@@ -25,19 +24,12 @@ const Index = () => {
     story.title.toLowerCase().includes(searchTerm.toLowerCase())
   ) || [];
 
-  useEffect(() => {
-    document.body.classList.add('dark');
-  }, []);
-
   return (
     <div className="container mx-auto px-4 py-8 bg-background text-foreground min-h-screen">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold flex items-center">
-          <Terminal className="mr-2" />
-          Top 100 Hacker News Stories
-        </h1>
-        <ThemeToggle />
-      </div>
+      <h1 className="text-3xl font-bold flex items-center mb-6">
+        <Newspaper className="mr-2" />
+        Top 100 Hacker News Stories
+      </h1>
       <div className="flex items-center mb-6">
         <div className="relative flex-grow mr-2">
           <Input
