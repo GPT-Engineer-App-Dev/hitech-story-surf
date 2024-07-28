@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Search } from 'lucide-react';
+import { Search, Terminal } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import HackerNewsList from '../components/HackerNewsList';
@@ -25,10 +25,17 @@ const Index = () => {
     story.title.toLowerCase().includes(searchTerm.toLowerCase())
   ) || [];
 
+  useEffect(() => {
+    document.body.classList.add('dark');
+  }, []);
+
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 bg-background text-foreground min-h-screen">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Top 100 Hacker News Stories</h1>
+        <h1 className="text-3xl font-bold flex items-center">
+          <Terminal className="mr-2" />
+          Top 100 Hacker News Stories
+        </h1>
         <ThemeToggle />
       </div>
       <div className="flex items-center mb-6">
@@ -38,15 +45,15 @@ const Index = () => {
             placeholder="Search stories..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10"
+            className="pl-10 bg-card text-card-foreground border-primary"
           />
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" size={20} />
         </div>
-        <Button type="button" onClick={() => {}} className="bg-pink-500 hover:bg-pink-600 text-white">
+        <Button type="button" onClick={() => {}} className="bg-primary hover:bg-secondary text-primary-foreground">
           Search
         </Button>
       </div>
-      {error && <p className="text-red-500">Error: {error.message}</p>}
+      {error && <p className="text-destructive">Error: {error.message}</p>}
       <HackerNewsList stories={filteredStories} isLoading={isLoading} />
     </div>
   );
