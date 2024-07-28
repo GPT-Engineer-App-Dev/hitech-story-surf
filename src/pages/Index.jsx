@@ -25,7 +25,7 @@ const Index = () => {
   ) || [];
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-background text-foreground min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-background text-foreground">
       <h1 className="text-3xl font-bold flex items-center mb-6">
         <Newspaper className="mr-2" />
         Top 100 Hacker News Stories

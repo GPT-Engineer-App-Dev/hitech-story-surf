@@ -1,14 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Terminal } from "lucide-react";
 import { Link } from "react-router-dom";
-import { ThemeToggle } from "../components/ThemeToggle";
 
 const LandingPage = () => {
   return (
-    <div className="container mx-auto px-4 py-8 bg-background text-foreground min-h-screen flex flex-col items-center justify-center">
-      <div className="absolute top-4 right-4">
-        <ThemeToggle />
-      </div>
+    <div className="container mx-auto px-4 py-16 bg-background text-foreground flex flex-col items-center justify-center">
       <h1 className="text-4xl font-bold mb-6 flex items-center">
         <Terminal className="mr-2" />
         Hacker News Top 100
