@@ -4,6 +4,7 @@ import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import HackerNewsList from '../components/HackerNewsList';
+import { ThemeToggle } from '../components/ThemeToggle';
 
 const fetchTopStories = async () => {
   const response = await fetch('https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=100');
@@ -26,7 +27,10 @@ const Index = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Top 100 Hacker News Stories</h1>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold">Top 100 Hacker News Stories</h1>
+        <ThemeToggle />
+      </div>
       <div className="flex items-center mb-6">
         <div className="relative flex-grow mr-2">
           <Input
